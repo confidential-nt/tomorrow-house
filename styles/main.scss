@@ -1,11 +1,4 @@
+/* Base */
 @import "./base/fonts";
-
-body {
-  font-family: "Noto Sans KR", sans-serif;
-}
-
-p {
-  font-size: 123px;
-  font-weight: 300;
-  color: #00f;
-}
+@import "./base/nomalize";
+@import "./base/reset";
