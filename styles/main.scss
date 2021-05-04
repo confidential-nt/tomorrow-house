@@ -1,3 +1,6 @@
+/* Constants (변수 선언은 제일 위에. 왜냐하면 선언한다고 해서 스타일에 영향 미치는 거 아니니까. 밑에 있는 파일에서도 두루두루 사용할 수 있으니까.) */
+@import "./constants/colors";
+
 /* Base */
 @import "./base/fonts";
 @import "./base/nomalize";
