@@ -7,5 +7,12 @@
 @import "./base/nomalize";
 @import "./base/reset";
 
+/* Mixins */
+@import "./mixins/text-style";
+
 /* Layouyd */
 @import "./layouts/grids";
+
+.row {
+  @include text-style(12, red);
+}
