@@ -1,0 +1,37 @@
+/** 자주 사용되는 ui 컴포넌트는 이렇게 모듈로 만들어두는 것이 좋다. **/
+
+%tag-base {
+  // 이것은 sass에서 제공하는 placeholder라는 것이다.
+  // tag들이 가지는 공통 스타일은 이곳에 선언한다.
+  @include inline-flexbox; // figma 보면..컨텐츠 사이즈에 따라 width가 결정됨. 따라서 이 경우는 inline-block이나 inline-flexbox 일것.
+  @include text-style(12);
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+// minxin과 placeholder의 차이? 반복되는 코드를 피한다는 공통점이 있지만
+// 1. placeholder는 인자를 받을 수 없기 때문에 확장성이 비교적 떨어짐
+// 2. mixin은 한번 선언해두면 필요한 곳 어디든지에 갖다 쓸 수 있지만 placeholder는 그런 용도로 만들었다기 보다는
+// 연관되어 있는 친구들끼리 공통 스타일을 가지고 있을 때, 반복해서 적는 것이 아니라 placeholder를 통해 그 스타일을 선언하고
+// 그것을 상속받는다는 식으로 작업을 해준다.
+// style.css에서 컴파일한 결과를 볼 수 있는데, minxin을 쓴 경우는 그냥 코드를 복붙한것과 같은 효과이지만
+// placeholder를 쓴 곳은 그 같은 placeholder를 쓴 태그끼리 묶어진다. 서로 연관되어 있다는 의미이기도..
+
+.tag-red {
+  @extend %tag-base;
+  color: $white;
+  background-color: $red;
+}
+
+.tag-green {
+  @extend %tag-base;
+  color: $white;
+  background-color: $green;
+}
+
+.tag-gray {
+  @extend %tag-base;
+  color: $secondary;
+  background-color: $boarder;
+}
