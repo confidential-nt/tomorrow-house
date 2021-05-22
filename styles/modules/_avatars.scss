@@ -1,0 +1,31 @@
+// 유저 프로필 이미지는 정보 콘텐츠로서 의미가 있기 때문에 img로 마크업을 하는게 좋다.
+// 따라서 마크업을 먼저 하고 시작한다.
+
+// 이미지 태그를 직접 조정하기 보다는 부모 태그를 이미지 태그로 감싸주고 그 부모 태그를 사용하는게 낫다.
+
+%avatar-base {
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // 정사각형 이미지는 위에 저렇게만 해도 상관이 없으나 세로가 가로에 비해 짧거나 아무튼 그런 이미지는
+    // 이상하게 찌부될 가능성이 있다.
+    // 해결책:
+    object-fit: cover;
+  }
+}
+
+.avatar-24 {
+  @extend %avatar-base;
+  width: 24px;
+  height: 24px;
+}
+
+.avatar-32 {
+  @extend %avatar-base;
+  width: 32px;
+  height: 32px;
+}
