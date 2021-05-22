@@ -1,0 +1,98 @@
+// 버튼은 굉장히 케이스가 많다. 버튼 디자인에도 패턴이 있기 때문에 이에 대한 이해만 있으면 쉽게 만들 수 있다.
+// 버튼은 안에 있는 콘텐츠에 따라 width가 달라지므로 inline-block, 혹은 inline-flex가 적절.
+
+%btn-base {
+  @include inline-flexbox;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-weight: 700;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+// 버튼은 3가지 기준으로 변주를 한다
+// 1. 버튼 자체의 스타일 2. 버튼의 사이즈 3. 버튼의 상태
+
+// 1번을 해볼텐데, 여기서 주의할 점은 스타일에 관련된 것만 선언해야 한다.
+// 즉, 사이즈와 같은 거에 대해선 고려하지 말라는 것.
+
+// 버튼의 이름으로 자주 사용되는 것들 1. fill 2. outlined 3. ghost
+// 1번은 배경이 칠해져 있는 것. 보더가 있는것은 2. 페이크 버튼(흰색에 걍 텍스트)은 3.
+
+// NOTE: Button Styles
+.btn-fill-primary {
+  @extend %btn-base;
+  color: $white;
+  background-color: $blue;
+  transition: background-color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    background-color: $blue-dark;
+  }
+}
+
+.btn-fill-secondary {
+  @extend %btn-base;
+  color: $primary;
+  background-color: $boarder;
+  transition: background-color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    background-color: $tertiary;
+  }
+}
+
+.btn-outlined {
+  @extend %btn-base;
+  color: $blue;
+  background-color: $white;
+  border: 1px solid $blue;
+  transition: background-color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    background-color: $blue-light;
+  }
+}
+
+.btn-ghost {
+  @extend %btn-base;
+  color: $primary;
+  background-color: transparent; // ghost 버튼이라는 뉘앙스 살리기 위해
+  transition: color 200ms ease-in-out;
+
+  &:not(:disabled):hover {
+    color: $secondary;
+  }
+}
+
+// NOTE: Button Size
+// 웬만하면 width값을 선언하지 말아라. 왜냐하면 width는 텍스트에 따라 가변할거기 때문. width를 고정시켜 두는건 오히려 방해다
+// 따라서 height값에 따라 사이즈를 구분하자.
+
+.btn-32 {
+  // base extend 안하는 이유? style 선언 클래스와 size 선언 클래스를 함께 사용할거기 때문에..
+  @include text-style(14);
+  height: 32px;
+}
+
+.btn-40 {
+  @include text-style(16);
+  height: 40px;
+}
+
+.btn-48 {
+  @include text-style(16);
+  height: 48px;
+}
+
+.btn-55 {
+  @include text-style(18);
+  height: 55px;
+}
+
+//NOTE: States
+// hover..active..focus..
+// 스타일에 영향을 많이 주기 때문에 스타일 부분에 같이 하면 됨.
