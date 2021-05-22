@@ -1,0 +1,65 @@
+// 시안 여기저기에 사용되는 class들을 선언.
+
+.visually-hidden {
+  // 모니터에는 직접 안보이지만 브라우저에 텍스트 정보를 전달해야 할 때가 있다.
+  // 특히 스크린 리더기를 위해..
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// 반응형 관련 클래스
+// 어딘가엔 있고 없고의 경우의 수
+// 모바일 태블릿 데스크탑 클래스
+//  o       x      x    sm-only
+//  o       o      x    lg-hidden
+//  x       o      x    md-only
+//  x       o      o    sm-hidden
+//  x       x      o    lg-only
+//  o       x      o    md-hidden
+
+.sm-only {
+  @media screen and (min-width: $md-breakpoint) {
+    display: none !important;
+  }
+}
+
+.md-only {
+  @media screen and (max-width: $md-breakpoint - 1) {
+    display: none !important;
+  }
+
+  @media screen and (min-width: $lg-breakpoint) {
+    display: none !important;
+  }
+}
+
+.lg-only {
+  @media screen and (max-width: $lg-breakpoint - 1) {
+    display: none !important;
+  }
+}
+
+.sm-hidden {
+  @media screen and (max-width: $md-breakpoint - 1) {
+    display: none !important;
+  }
+}
+
+.md-hidden {
+  @media screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint -1) {
+    display: none !important;
+  }
+}
+
+.lg-hidden {
+  @media screen and (min-width: $lg-breakpoint) {
+    display: none !important;
+  }
+}
