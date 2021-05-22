@@ -1,0 +1,33 @@
+// 별표: 아이콘 폰트로 만들어놓음. 마크업을 좀 간단하게 해보자.
+
+%star-rating-base {
+  @include flexbox(start);
+
+  .ic-star {
+    color: $boarder;
+
+    &.is-active {
+      color: $blue;
+    }
+  }
+}
+
+.star-rating-13 {
+  @extend %star-rating-base;
+  font-size: 13px;
+}
+
+.star-rating-16 {
+  @extend %star-rating-base;
+  font-size: 16px;
+}
+
+.star-rating-20 {
+  @extend %star-rating-base;
+  font-size: 20px;
+}
+
+.star-rating-24 {
+  @extend %star-rating-base;
+  font-size: 24px;
+}
