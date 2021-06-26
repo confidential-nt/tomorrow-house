@@ -33,96 +33,98 @@
           <!-- 따라서, 타블렛의 경우 여기서 col-md-12를 그냥 적어주면 되기는 하는데, 이렇게 적으면 width가 100%가 된다. 그런데 col-sm-4 때문에 이미 width:100%가 먹은 상태. 따라서 굳이 적어주지 않는다. 데스크탑도 마찬가지. -->
           <!-- 컬럼의 경우, 레이아웃이나 컬럼의 개수가 바뀔때만 클래스로 지정하기.. -->
           <div class="col-sm-4">
-            <div class="gnb-left">
-              <h1 class="logo">
-                <!-- 시안에서 가장 먼저 보이는 것은 메뉴 버튼이지만, 버튼 먼저 나오는 것은 semantic 하지 않으므로 먼저 마크업하지 않는다. -->
-                <a href="/">
-                  <img src="./assets/images/logo.svg" alt="내일의 집" />
-                </a>
-              </h1>
+            <div class="gnb-wrapper">
+              <div class="gnb-left">
+                <h1 class="logo">
+                  <!-- 시안에서 가장 먼저 보이는 것은 메뉴 버튼이지만, 버튼 먼저 나오는 것은 semantic 하지 않으므로 먼저 마크업하지 않는다. -->
+                  <a href="/">
+                    <img src="./assets/images/logo.svg" alt="내일의 집" />
+                  </a>
+                </h1>
 
-              <nav class="gnb-nav sm-hidden">
-                <!-- 내일의 집 서비스 특정 페이지로 굵직하게 이동하게 하는 것. 즉. 네비게이션의 역할을 함. -->
-                <!-- 중요! nav와 같은 섹셔닝 엘리먼트 안에 반드시 헤딩 태그를 달아줘야함. 헤딩 안에는 nav가 뭐하는 앤지 그 타이틀을 달것. -->
-                <h2 class="visually-hidden">메뉴</h2>
-                <ul class="gnb-nav-list">
-                  <li class="gnb-nav-item"><a href="/">커뮤니티</a></li>
-                  <li class="gnb-nav-item"><a href="/">스토어</a></li>
-                  <li class="gnb-nav-item"><a href="/">인테리어시공</a></li>
-                </ul>
-              </nav>
-
-              <button
-                class="gnb-icon-button sm-only"
-                type="button"
-                aria-label="메뉴 열기 버튼"
-              >
-                <!-- 옆에서부터 서랍처럼 열리는 구조. 서치도 마찬가지. -->
-                <i class="ic-menu"></i>
-              </button>
-            </div>
-
-            <div class="gnb-right">
-              <div class="input-group lg-only">
-                <i class="ic-search" aria-hidden></i>
-                <input
-                  class="form-input"
-                  type="text"
-                  placeholder="스토어 검색"
-                />
-              </div>
-
-              <div class="button-group">
-                <button
-                  class="gnb-icon-button lg-hidden"
-                  type="button"
-                  aria-label="검색창 열기 버튼"
-                >
-                  <i class="ic-search"></i>
-                </button>
-
-                <a
-                  class="gnb-icon-button sm-hidden"
-                  href="/"
-                  aria-label="스크랩북 페이지로 이동"
-                >
-                  <i class="ic-bookmark"></i>
-                </a>
-
-                <a
-                  class="gnb-icon-button sm-hidden"
-                  href="/"
-                  aria-label="내 소식 페이지로 이동"
-                >
-                  <i class="ic-bell"></i>
-                </a>
-                <!-- 모바일에서 보이는 메뉴 버튼이나 버튼 그룹안에 있는 아이콘 버튼들이나 안에 똑같이 아이콘 들어있고..크기 그런 것도 같으니 같은 클래스명을 사용해도 ㄱㅊ -->
-                <a
-                  class="gnb-icon-button"
-                  href="/"
-                  aria-label="장바구니 페이지로 이동"
-                >
-                  <i class="ic-cart"></i>
-                </a>
+                <nav class="gnb-nav sm-hidden">
+                  <!-- 내일의 집 서비스 특정 페이지로 굵직하게 이동하게 하는 것. 즉. 네비게이션의 역할을 함. -->
+                  <!-- 중요! nav와 같은 섹셔닝 엘리먼트 안에 반드시 헤딩 태그를 달아줘야함. 헤딩 안에는 nav가 뭐하는 앤지 그 타이틀을 달것. -->
+                  <h2 class="visually-hidden">메뉴</h2>
+                  <ul class="gnb-nav-list">
+                    <li class="gnb-nav-item"><a href="/">커뮤니티</a></li>
+                    <li class="gnb-nav-item"><a href="/">스토어</a></li>
+                    <li class="gnb-nav-item"><a href="/">인테리어시공</a></li>
+                  </ul>
+                </nav>
 
                 <button
-                  class="gnb-avatar-button sm-hidden"
+                  class="gnb-menu-button gnb-icon-button sm-only"
                   type="button"
-                  aria-label="마이메뉴 열기 버튼"
+                  aria-label="메뉴 열기 버튼"
                 >
-                  <div class="avatar-32">
-                    <img
-                      src="./assets/images/img-user-01.jpg"
-                      alt="사달라 아저씨"
-                    />
-                  </div>
+                  <!-- 옆에서부터 서랍처럼 열리는 구조. 서치도 마찬가지. -->
+                  <i class="ic-menu"></i>
                 </button>
               </div>
 
-              <button class="btn-primary btn-40 sm-hidden" type="button">
-                글쓰기
-                <i class="ic-chevron" aria-hidden></i>
-              </button>
+              <div class="gnb-right">
+                <div class="input-group lg-only">
+                  <i class="ic-search" aria-hidden></i>
+                  <input
+                    class="form-input"
+                    type="text"
+                    placeholder="스토어 검색"
+                  />
+                </div>
+
+                <div class="button-group">
+                  <button
+                    class="gnb-search-button gnb-icon-button lg-hidden"
+                    type="button"
+                    aria-label="검색창 열기 버튼"
+                  >
+                    <i class="ic-search"></i>
+                  </button>
+
+                  <a
+                    class="gnb-icon-button sm-hidden"
+                    href="/"
+                    aria-label="스크랩북 페이지로 이동"
+                  >
+                    <i class="ic-bookmark"></i>
+                  </a>
+
+                  <a
+                    class="gnb-icon-button sm-hidden"
+                    href="/"
+                    aria-label="내 소식 페이지로 이동"
+                  >
+                    <i class="ic-bell"></i>
+                  </a>
+                  <!-- 모바일에서 보이는 메뉴 버튼이나 버튼 그룹안에 있는 아이콘 버튼들이나 안에 똑같이 아이콘 들어있고..크기 그런 것도 같으니 같은 클래스명을 사용해도 ㄱㅊ -->
+                  <a
+                    class="gnb-icon-button"
+                    href="/"
+                    aria-label="장바구니 페이지로 이동"
+                  >
+                    <i class="ic-cart"></i>
+                  </a>
+
+                  <button
+                    class="gnb-avatar-button sm-hidden"
+                    type="button"
+                    aria-label="마이메뉴 열기 버튼"
+                  >
+                    <div class="avatar-32">
+                      <img
+                        src="./assets/images/img-user-01.jpg"
+                        alt="사달라 아저씨"
+                      />
+                    </div>
+                  </button>
+                </div>
+
+                <button class="btn-primary btn-40 sm-hidden" type="button">
+                  글쓰기
+                  <i class="ic-chevron" aria-hidden></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>

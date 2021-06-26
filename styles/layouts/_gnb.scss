@@ -1,0 +1,46 @@
+// gnb는 모듈인가, 레이아웃인가? => 레이아웃에 가깝다. 모듈에 있는 것은 시안 여기저기에서 반복적으로 쓰이는거고, 레이아웃은 딱 하나만 있는 거기 때문.
+.gnb {
+  position: relative;
+  border-bottom: 1px solid $boarder;
+  //   .row > .col-sm-4 {
+  //     @include flexbox(between);
+  //   } => grid 시스템에 다른 스타일 적용은 하지 않는 것이 좋다!
+  &-wrapper {
+    @include flexbox(between);
+    height: 50px;
+  }
+
+  .logo {
+    @include pos-center;
+
+    a {
+      display: block; // anchor는 inline요소이므로 width, height 값을 갖지 않는다. 따라서 display를 block으로 바꿔준다.
+      img {
+        display: block; // 이미지를 원활하게 다루려면 꼭 display: block 해주자.
+        height: 20px; // figma 파일을 보니, height의 값은 20으로 딱 맞아 떨어지는데 비해 width는 소수점이 붙어있는 애매한 값이다. 이럴땐 height를 기준으로, width의 값은 auto로 설정하자.
+        width: auto;
+      } // height는 가장 안쪽 자식요소에 의해 결정된다. (부모요소에서 따로 설정해주지 않는다면.)
+    }
+  }
+
+  &-search-button {
+    margin-right: 4px;
+  }
+
+  .button-group {
+    @include flexbox(end);
+  }
+
+  &-icon-button {
+    // == .gnb-icon-button
+    @include flexbox;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    color: $secondary;
+  }
+
+  &-menu-button {
+    color: $blue;
+  }
+}
