@@ -1,17 +1,27 @@
 // gnb는 모듈인가, 레이아웃인가? => 레이아웃에 가깝다. 모듈에 있는 것은 시안 여기저기에서 반복적으로 쓰이는거고, 레이아웃은 딱 하나만 있는 거기 때문.
+// 무작정 하지말고, 가장 이상적인 방법을 찾아보자.
+// 선생님께서 어떤거는 부모 클래스에 넣고 안넣고 그러는데, 나는 나름 기준을 세워서, 같은 컴포넌트에서 반복적으로 사용되는 클래스, 클래스가 없는 그냥 태그에만 사용하기로 했다. + 부모-자식 관계가 너무 명확한 경우(ul,li), 이름만 봤을 땐 어디에 속하는 무슨 요소인지 모르겠을때(ex: button-group), & 축약 이름을 쓰기 위해 편의상
+
 .gnb {
   position: relative;
   border-bottom: 1px solid $boarder;
   //   .row > .col-sm-4 {
   //     @include flexbox(between);
   //   } => grid 시스템에 다른 스타일 적용은 하지 않는 것이 좋다!
+  // 해결책: gnb-right, left를 감싸는 다른 클래스를 만들자.
   &-wrapper {
     @include flexbox(between);
     height: 50px;
   }
 
+  &-right {
+    .button-group {
+      @include flexbox(end);
+    }
+  }
+
   .logo {
-    @include pos-center;
+    @include pos-center; // 나는 사실 처음에 flex-grow: .5하는 방법을 택했는데, (앱솔루트를 적용하면 부모요소의 넓이,높이가 달라질 수 있으니까..그런데 여기선 이미 부모의 넓이와 높이가 고정되어 있어서? 괜찮은듯?)
 
     a {
       display: block; // anchor는 inline요소이므로 width, height 값을 갖지 않는다. 따라서 display를 block으로 바꿔준다.
@@ -27,10 +37,6 @@
     margin-right: 4px;
   }
 
-  .button-group {
-    @include flexbox(end);
-  }
-
   &-icon-button {
     // == .gnb-icon-button
     @include flexbox;
@@ -42,5 +48,53 @@
 
   &-menu-button {
     color: $blue;
+  }
+
+  @include responsive(T) {
+    &-wrapper {
+      height: 80px;
+    }
+    &-left {
+      @include flexbox(start);
+    }
+
+    &-right {
+      @include flexbox(end);
+      .button-group {
+        margin-right: 24px;
+
+        .gnb-icon-button {
+          margin-right: 8px;
+        }
+      }
+    }
+    .logo {
+      position: static; // postion: static 일때, left와 top은 아무런 효과도 없다.
+      transform: none;
+      margin-right: 32px;
+
+      img {
+        height: 24px;
+      }
+    }
+
+    .btn-fill-primary {
+      // 원하는 모습에 따라 모듈 자유롭게 변경 가능.
+      width: 88px; // 시안에 버튼의 width가 88px로 되어있음.
+      i {
+        margin-left: 4px;
+      }
+    }
+
+    // 파일이 커지고 있으므로 파일을 좀 나눌필요가 있다. => gnb-nav작성.
+  }
+
+  @include responsive(D) {
+    &-right {
+      .input-group {
+        width: 264px;
+        margin-right: 24px;
+      }
+    }
   }
 }
