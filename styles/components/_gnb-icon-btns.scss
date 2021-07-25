@@ -1,0 +1,30 @@
+// 이걸 왜 빼냐면 얘에 대한 디테일한 작업이 이루어 질건데, 분리시키지 않으면 나중에 아이콘 버튼에 문제가 생겨 코드를 살펴볼 일이 생겼을 때
+// 매우 힘들어지기 때문.
+
+.gnb-icon-button {
+  // == .gnb-icon-button
+  @include flexbox;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  color: $secondary;
+  transition: color 200ms ease-in-out;
+  //   &.is-search {
+  //     margin-right: 4px;
+  //   } 이렇게 하지 않는 이유? =>  여기에는 정말로 gnb icon btn에 대한 고유의 속성만 작성함. 즉, 웬만하면 절대 수정되지 않을 것들..
+  // 이렇게 하면, 서치 버튼은 무조건 4px을 가져야한다라는 뜻이 됨.
+  // 디자인분께서 옆에있는 아이콘과 순서를 바꾸고 싶다고 해서 마크업을 바꾸게되면, mg-right을 수정해줘야함.
+  // 즉, 얘가 서치 버튼이어서 mg-right= 4px을 가지는 것이 아니라, 얘가 두 아이콘 중에서 앞에 있는 녀석이라서 이러한 값을 가졌다라고 보는게 맞음.
+
+  &.is-menu {
+    color: $blue; // 얘는 어딜가나 블루여야 함.
+
+    &:active {
+      color: $blue-dark;
+    }
+  }
+
+  &:active {
+    color: $primary;
+  }
+}
