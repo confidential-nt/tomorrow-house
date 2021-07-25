@@ -7,7 +7,7 @@
   background-color: $white;
   border: 1px solid $boarder;
   border-radius: 4px;
-  appearance: none;
+  appearance: none; // select에 적용되어있는 기본 스타일링을 제거하기 위해. 이러는 경우가 더 많다.
   transition: background-color 200ms ease-in-out;
 
   &::placeholder {
