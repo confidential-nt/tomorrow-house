@@ -1,14 +1,24 @@
 .gnb-nav {
+  $padding: 8px; // 여기서만 사용가능.
   &-list {
     @include flexbox(start);
   }
 
   &-item {
+    &.is-active,
+    &:hover {
+      a {
+        color: $blue;
+      }
+    }
+
     &:not(:last-child) {
-      margin-right: 24px;
+      margin-right: 24px - ($padding * 2); // 만약 그냥 8px이라고 쓰면? 이렇게하면 나중에 이 코드를 보는 사람이 이 코드의 의도를 이해하기가 힘듦.
     }
     a {
       @include text-style(18, $primary);
+      display: block;
+      padding: $padding;
       font-weight: 700;
     }
   }
