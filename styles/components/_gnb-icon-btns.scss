@@ -2,13 +2,16 @@
 // 매우 힘들어지기 때문.
 
 .gnb-icon-button {
+  $badge-size: 16px;
   // == .gnb-icon-button
   @include flexbox;
+  position: relative;
   width: 32px;
   height: 32px;
   font-size: 24px;
   color: $secondary;
-  transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+  border-radius: 50%;
   //   &.is-search {
   //     margin-right: 4px;
   //   } 이렇게 하지 않는 이유? =>  여기에는 정말로 gnb icon btn에 대한 고유의 속성만 작성함. 즉, 웬만하면 절대 수정되지 않을 것들..
@@ -24,7 +27,40 @@
     }
   }
 
+  &.is-cart {
+    // 안해줘도 되긴 하는데, 그냥 위치가 다른 아이콘이랑 좀 다른게 거슬려서..
+    i {
+      position: relative;
+      top: 1px;
+      right: 1px;
+    }
+  }
+
   &:active {
     color: $primary;
+  }
+
+  .badge {
+    display: block;
+    min-width: $badge-size; // 뱃지 속 숫자가 커질때를 대비.
+    height: $badge-size;
+    border-radius: $badge-size / 2; // 그냥 50%를 적용했더니 모양이 이상해져서 이렇게 하거나, 100000px 같은 아주 큰 값을 넣거나..
+    background-color: $red;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: $white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 4px;
+  }
+
+  @include responsive(T) {
+    &:hover {
+      color: $white;
+      background-color: $blue;
+    }
   }
 }
